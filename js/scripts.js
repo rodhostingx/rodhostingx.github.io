@@ -666,14 +666,14 @@ function initSliderUI() {
                   },
                   "VPS2": {
                     "name": "VPS PRO",
-                    "disk": "30GB NVMe",
+                    "disk": "40GB NVMe",
                     "ram": "4GB ECC",
                     "cpu": "2 vCore(s) Xeon",
                     "bandwith": "1Gbps ilimitado",
                     "setup": "Incluso",
                     "ip": "1 IP",
-                    "price": "85.90",
-                    "priceon": "85.90"
+                    "price": "95.90",
+                    "priceon": "95.90"
                   },
                   "VPS3": {
                     "name": "VPS TURBO",
