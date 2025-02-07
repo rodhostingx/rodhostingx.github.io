@@ -495,6 +495,175 @@ CUSTOM VPS SLIDER
   <script>new WOW().init();</script>
   <script src="js/covervid.min.js"></script>
   <script src="js/scripts.js"></script>
-
+  <style>
+    /* Estilos do Pop-up */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .popup-content {
+      background: linear-gradient(135deg, #ffffff, #f2f6fc);
+      padding: 35px;
+      border-radius: 15px;
+      width: 450px; /* Aumentei a largura */
+      text-align: center;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.4s ease-in-out;
+      border: 2px solid #6c9bcf;
+      transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    
+    .popup-header h2 {
+      font-size: 26px;
+      font-weight: bold;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .popup-body p {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    
+    .popup-body strong {
+      color: #2980b9;
+    }
+    
+    .popup-footer {
+      margin-top: 20px;
+    }
+    
+    /* Botão principal */
+    .site-btn {
+      background: linear-gradient(135deg, #3498db, #6c9bcf);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    }
+    
+    .site-btn:hover {
+      background: linear-gradient(135deg, #2980b9, #5a8ab8);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(41, 128, 185, 0.5);
+    }
+    
+    /* Botão de fechar */
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #777;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .close-btn:hover {
+      color: #d63031;
+      transform: scale(1.2);
+    }
+    
+    /* Animação de entrada */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Animação de saída */
+    @keyframes slideOut {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+    }
+    </style>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const popup = document.getElementById("notification-popup");
+      const popupContent = document.querySelector(".popup-content");
+      const closeButton = document.querySelector(".close-btn");
+      const siteButton = document.querySelector(".site-btn");
+    
+      // Exibir o pop-up quando a página carregar
+      popup.style.display = "flex";
+    
+      // Função para fechar o pop-up com animação
+      function closePopup() {
+        popupContent.style.animation = "slideOut 0.4s ease-in-out forwards";
+        setTimeout(() => { popup.style.display = "none"; }, 400);
+      }
+    
+      if (closeButton) {
+        closeButton.addEventListener("click", closePopup);
+      }
+    
+      if (siteButton) {
+        siteButton.addEventListener("click", function() {
+          closePopup();
+          setTimeout(() => { window.location.href = "#"; }, 400); // Substitua "#" pelo link correto
+        });
+      }
+    
+      // Fechar ao clicar fora do conteúdo
+      popup.addEventListener("click", function(event) {
+        if (event.target === popup) {
+          closePopup();
+        }
+      });
+    });
+    </script>
+    
+    <!-- Pop-up de Notificação -->
+    <div id="notification-popup" class="popup-overlay">
+      <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <div class="popup-header">
+          <h2>🚀 <b>Oferta Especial para Novos Clientes!</b> 🎉</h2>
+        </div>
+        <div class="popup-body">
+          <p>🎁 Na <b>primeira compra</b>, você ganha <b>15 dias de divulgação gratuita</b> do seu negócio em grupos estratégicos no Facebook! 💡</p>
+          <p>🌟 <b>Aproveite essa oportunidade única e destaque-se!</b></p>
+        </div>
+        <div class="popup-footer">
+          <button class="site-btn">Aproveitar Agora</button>
+        </div>
+      </div>
+    </div>
+    
 </body>
 </html>
