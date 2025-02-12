@@ -86,7 +86,7 @@
   PRICING TABLES
   *******************
   -->
-  <section class="pricing special sec-up-slider">
+<section class="pricing special sec-up-slider">
     <div class="container">
         <div class="row">
             <!-- Ajuste as classes col-md-3 para col-md-4 e col-lg-3 para col-lg-4 -->
@@ -111,7 +111,7 @@
                         <li><i class="icon-speed"></i> <span class="c-pink">ISO</span><br> <span>Customizada</span></li>
                     </ul>
                 </div>
-            </div> -->
+            </div>
             
             <!-- Repita o ajuste para os outros cards -->
             <div class="col-sm-12 col-md-4 col-lg-4">
@@ -138,7 +138,7 @@
             
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="wrapper text-left">
-                    <div class="plans badge feat bg-pink">ALTA PERFORMANCE</div>
+                    <div class="plans badge feat bg-pink">MAIS VENDIDO</div>
                     <div class="top-content">
                         <img class="svg mb-3" src="fonts/svg/vps.svg" alt="">
                         <div class="title">VPS TURBO</div>
@@ -161,7 +161,7 @@
             <!-- O quarto card será movido para a próxima linha -->
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="wrapper text-left">
-                    <div class="plans badge feat bg-pink">POWERFUL</div>
+                    <div class="plans badge feat bg-pink">MAIS VENDIDO</div>
                     <div class="top-content">
                         <img class="svg mb-3" src="fonts/svg/vps.svg" alt="">
                         <div class="title">VPS ENTERPRISE</div>
@@ -189,76 +189,420 @@
 CUSTOM VPS SLIDER
 *******************
 -->
-<section id="custom" class="sec-normal sec-bg3 cpupath-w">
+<section id="custom-slider" class="sec-normal sec-bg3 cpupath-w">
   <div class="container">
-    <div class="wpc-cloud-range">
-      <div class="row">
-        <div class="col-sm-12">
-          <h2 class="section-heading text-white"><b>TODOS OS PLANOS!</b></h2>
-          <p class="section-subheading">Aqui você encontra todos os Planos, detalhadamente!</p>
-        </div>
-        <div class="col-sm-12">
-          <div class="slider-ui" data-handle="1">
-            <input class="slider-inp invisible" data-count-step="5" type="text" />
-            <div class="slider-line"></div>
-          </div>
-        </div>
+      <h2 class="selection-title"><b>SELECIONE QUAL LOCALIDADE VOCÊ DESEJA A SUA VPS!</b></h2>
+
+      <div class="country-selector">
+          <button class="country-btn br" onclick="switchPlans('br')">
+              <img src="https://flagcdn.com/br.svg" alt="Brasil" class="flag">
+              <span>VPS BRASIL</span>
+          </button>
+          <button class="country-btn ca" onclick="switchPlans('ca')">
+              <img src="https://flagcdn.com/ca.svg" alt="Canadá" class="flag">
+              <span>VPS CANADA</span>
+          </button>
       </div>
-    </div>
-    <div class="wpc-vps-info">
-      <div class="row">
-        <div class="col-md-12 col-lg-9">
+
+      <div class="slider-container">
+          <input type="range" id="plan-slider" min="1" max="4" value="1" step="1" oninput="updatePlanDisplay(this.value)">
+          <div class="slider-labels">
+              <span id="plan-1" class="slider-label"><b>VPS 01</b></span>
+              <span id="plan-2" class="slider-label">VPS 02</span>
+              <span id="plan-3" class="slider-label">VPS 03</span>
+              <span id="plan-4" class="slider-label">VPS 04</span>
+              <span id="plan-5" class="slider-label" style="display: none;">VPS 05</span>
+              <span id="plan-6" class="slider-label" style="display: none;">VPS 06</span>
+          </div>
+      </div>
+
+      <div class="wpc-vps-info">
           <div class="row">
-            <div class="col-sm-12 col-md-4">
-              <h3 class="title">
-              <i class="icon-cpu"></i> CPU <span id="cpu-val" class="info">---</span>
-              </h3>
-            </div>
-            <div class="col-sm-12 col-md-4">
-              <h3 class="title">
-              <i class="icon-ram"></i> RAM <span id="ram-val" class="info">---</span>
-              </h3>
-            </div>
-            <div class="col-sm-12 col-md-4">
-              <h3 class="title">
-              <i class="icon-drivessd"></i> SSD <span id="disk-val" class="info">---</span>
-              </h3>
-            </div>
-            <div class="col-sm-12 col-md-4">
-              <h3 class="title">
-              <i class="icon-speed"></i> Trafego & AntiDDOS <span id="bw-val" class="info">---</span>
-              </h3>
-            </div>
-            <div class="col-sm-12 col-md-4">
-              <h3 class="title">
-              <i class="icon-repair"></i> Setup <span id="setup-val" class="info">---</span>
-              </h3>
-            </div>
-            <div class="col-sm-12 col-md-4">
-              <h3 class="title">
-              <i class="icon-network"></i> IP<span id="ip-val" class="info">---</span>
-              </h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 col-lg-3">
-          <div class="h-plans-info">
-            <div class="content-price price-container">
-              <div class="price-content">
-                <div class="plans badge feat bg-pink period">mensal</div>
-                <div class="price"><span class="symbol coin">R$</span>
-                <span id="price-val"></span>
-                <span id="priceon-val"></span>
+              <div class="col-md-12 col-lg-9">
+                  <div class="row">
+                      <div class="col-sm-12 col-md-4">
+                          <h3 class="title">
+                              <i class="icon-cpu"></i> CPU <span id="cpu-value" class="info">---</span>
+                          </h3>
+                      </div>
+                      <div class="col-sm-12 col-md-4">
+                          <h3 class="title">
+                              <i class="icon-ram"></i> RAM <span id="ram-value" class="info">---</span>
+                          </h3>
+                      </div>
+                      <div class="col-sm-12 col-md-4">
+                          <h3 class="title">
+                              <i class="icon-drivessd"></i> SSD <span id="disk-value" class="info">---</span>
+                          </h3>
+                      </div>
+                      <div class="col-sm-12 col-md-4">
+                          <h3 class="title">
+                              <i class="icon-speed"></i> Trafego & AntiDDOS <span id="bw-value" class="info">---</span>
+                          </h3>
+                      </div>
+                      <div class="col-sm-12 col-md-4">
+                          <h3 class="title">
+                              <i class="icon-repair"></i> Setup <span id="setup-value" class="info">---</span>
+                          </h3>
+                      </div>
+                      <div class="col-sm-12 col-md-4">
+                          <h3 class="title">
+                              <i class="icon-network"></i> IP<span id="ip-value" class="info">---</span>
+                          </h3>
+                      </div>
+                  </div>
               </div>
-              <a href="https://wa.link/j36j7m" class="btn btn-default-yellow-fill">Contratar</a>
-            </div>
+              <div class="col-md-12 col-lg-3">
+                  <div class="h-plans-info">
+                      <div class="content-price price-container">
+                          <div class="price-content">
+                              <div class="plans badge feat bg-pink period">mensal</div>
+                              <div class="price">
+                                  <span class="symbol coin">R$</span>
+                                  <span id="price-value">---</span>
+                              </div>
+                              <a href="https://wa.link/j36j7m" class="btn btn-default-yellow-fill">Contratar</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
-  </div>
   </div>
 </section>
+<style>
+.slider-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.selection-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #dbd8d8;
+    margin: 20px 0;
+}
+
+#plan-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+#plan-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#plan-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#plan-slider:hover::-webkit-slider-thumb {
+    background: #45a049;
+    transform: scale(1.1);
+}
+
+#plan-slider:hover::-moz-range-thumb {
+    background: #45a049;
+    transform: scale(1.1);
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.slider-label {
+    font-weight: bold;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.slider-label:hover {
+    color: #4CAF50;
+}
+
+.country-selector {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.country-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.country-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #e0e0e0, #d0d0d0);
+}
+
+.country-btn.br {
+    background: linear-gradient(135deg, #009c3b, #ffdf00);
+    color: white;
+}
+
+.country-btn.ca {
+    background: linear-gradient(135deg, #d52b1e, #ffffff);
+    color: white;
+}
+
+.country-btn.br:hover {
+    background: linear-gradient(135deg, #008c3b, #ffcc00);
+}
+
+.country-btn.ca:hover {
+    background: linear-gradient(135deg, #c52b1e, #f0f0f0);
+}
+
+.flag {
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+</style>
+<style>
+  /* Estilos para os botões de seleção de país */
+.country-selector {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.country-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0 .1);
+}
+
+.country-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #e0e0e0, #d0d0d0);
+}
+
+.country-btn.br {
+    background: linear-gradient(135deg, #009c3b, #ffdf00);
+    color: white;
+}
+
+.country-btn.ca {
+    background: linear-gradient(135deg, #d52b1e, #ffffff);
+    color: white;
+}
+
+.country-btn.br:hover {
+    background: linear-gradient(135deg, #008c3b, #ffcc00);
+}
+
+.country-btn.ca:hover {
+    background: linear-gradient(135deg, #c52b1e, #f0f0f0);
+}
+
+.flag {
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+</style>
+<script>
+const newPlans = {
+    br: [
+        {
+            name: "VPS 01",
+            cpu: "1 vCore Xeon",
+            ram: "2GB ECC",
+            disk: "20GB NVMe",
+            bw: "100Mbps ilimitado",
+            setup: "Linux ou Windows ✔",
+            ip: "1 IP",
+            price: "39,90"
+        },
+        {
+            name: "VPS PRO",
+            cpu: "2 vCore(s) Xeon",
+            ram: "4GB ECC",
+            disk: "40GB NVMe",
+            bw: "1Gbps ilimitado ✔",
+            setup: "Linux ou Windows ✔",
+            ip: "1 IP",
+            price: "95,90"
+        },
+        {
+            name: "VPS TURBO",
+            cpu: "4 vCore(s) Xeon",
+            ram: "8GB ECC",
+            disk: "40GB NVMe",
+            bw: "1Gbps ilimitado ✔",
+            setup: "Linux ou Windows ✔",
+            ip: "1 IP",
+            price: "154,85"
+        },
+        {
+            name: "VPS ENTERPRISE",
+            cpu: "6 vCore(s) Xeon",
+            ram: "16GB ECC",
+            disk: "60GB NVMe",
+            bw: "1Gbps ilimitado ✔",
+            setup: "Linux ou Windows ✔",
+            ip: "1 IP",
+            price: "249,90"
+        }
+    ],
+    ca: [
+        {
+            name: "Canadá 1",
+            cpu: "2 vCORE",
+            ram: "2GB",
+            disk: "40GB SSD",
+            bw: "Até 1Gbps ANTI-DDOS",
+            setup: "Linux ou Windows",
+            ip: "1 IP",
+            price: "55,92"
+        },
+        {
+            name: "Canadá 2",
+            cpu: "3 vCORE",
+            ram: "3GB",
+            disk: "45GB SSD",
+            bw: "Até 1Gbps ANTI-DDOS",
+            setup: "Linux ou Windows",
+            ip: "1 IP",
+            price: "80,92"
+        },
+        {
+            name: "Canadá 3",
+            cpu: "4 vCORE",
+            ram: "4GB",
+            disk: "50GB SSD",
+            bw: "Até 1Gbps ANTI-DDOS",
+            setup: "Linux ou Windows",
+            ip: "1 IP",
+            price: "119,92"
+        },
+        {
+            name: "Canadá 4",
+            cpu: "5 vCORE",
+            ram: "6GB",
+            disk: "55GB SSD",
+            bw: "Até 1Gbps ANTI-DDOS",
+            setup: "Linux ou Windows",
+            ip: "1 IP",
+            price: "151,92"
+        },
+        {
+            name: "Canadá 5",
+            cpu: "6 vCORE",
+            ram: "8GB",
+            disk: "60GB SSD",
+            bw: "Até 1Gbps ANTI-DDOS",
+            setup: "Linux ou Windows",
+            ip: "1 IP",
+            price: "175,92"
+        },
+        {
+            name: "Canadá 6",
+            cpu: "7 vCORE",
+            ram: "10GB",
+            disk: "65GB SSD",
+            bw: "Até 1Gbps ANTI-DDOS",
+            setup: "Linux ou Windows",
+            ip: "1 IP",
+            price: "207,92"
+        }
+    ]
+};
+
+let selectedCountry = 'br'; // País selecionado atualmente
+let selectedPlanIndex = 0; // Índice do plano atual
+
+function updateDisplayedPlan() {
+    const planList = newPlans[selectedCountry];
+    const currentPlan = planList[selectedPlanIndex];
+
+    document.getElementById('cpu-value').textContent = currentPlan.cpu;
+    document.getElementById('ram-value').textContent = currentPlan.ram;
+    document.getElementById('disk-value').textContent = currentPlan.disk;
+    document.getElementById('bw-value').textContent = currentPlan.bw;
+    document.getElementById('setup-value').textContent = currentPlan.setup;
+    document.getElementById('ip-value').textContent = currentPlan.ip;
+    document.getElementById('price-value').textContent = currentPlan.price;
+}
+
+function switchPlans(country) {
+    selectedCountry = country;
+    selectedPlanIndex = 0; // Reinicia para o primeiro plano
+    updateDisplayedPlan();
+    document.getElementById('plan-slider').value = 1; // Reinicia o slider para o primeiro plano
+
+    // Atualiza o número máximo do slider e as labels
+    if (country === 'br') {
+        document.getElementById('plan-slider').max = 4;
+        document.getElementById('plan-5').style.display = 'none';
+        document.getElementById('plan-6').style.display = 'none';
+    } else {
+        document.getElementById('plan-slider').max = 6;
+        document.getElementById('plan-5').style.display = 'inline';
+        document.getElementById('plan-6').style.display = 'inline';
+    }
+
+    updatePlanDisplay(1); // Atualiza a exibição do plano
+}
+
+function updatePlanDisplay(value) {
+    selectedPlanIndex = value - 1; // Ajusta o índice (0-based)
+    updateDisplayedPlan();
+}
+
+// Inicializa com os planos do Brasil
+switchPlans('br');
+</script>
   <!--
   *******************
   LOAD BALANCING
