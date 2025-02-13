@@ -1010,17 +1010,40 @@ switchPlans('br');
     </div>
     <!--Start of Tawk.to Script-->
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/67adffb0825083258e14a550/1ijvqtib4';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
+<!-- Widget de Chat -->
+<div id="chat-widget">
+  <a href="https://tawk.to/chat/67adffb0825083258e14a550/1ijvqtib4" target="_blank">
+      <img src="https://cryptologos.cc/logos/chatcoin-chat-logo.png" alt="Chat Icon">
+  </a>
+</div>
+<style>
+  /* Estilos para o widget de chat */
+#chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#chat-widget img {
+    width: 50px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#chat-widget img:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+</style>
+<script>
+  // Você pode adicionar funcionalidades JavaScript aqui, se necessário
+// Por exemplo, para rastrear cliques no widget:
+document.getElementById('chat-widget').addEventListener('click', function() {
+    console.log('Widget de chat clicado!');
+    // Aqui você pode adicionar código para rastrear o clique, se necessário
+});
+</script>
   <!--End of Tawk.to Script-->
 </body>
 </html>
